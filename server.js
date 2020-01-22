@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 //POST request from index
 //make HTTP call
 //Send result back to index
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   const api_key = "b323aa23f286ee3fa739734a62bbf508";
   let lower_city = req.body.city;
   let upper_city = lower_city.charAt(0).toUpperCase() + lower_city.substring(1);
@@ -26,14 +26,8 @@ app.post("/", (req, res) => {
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`;
 
   //Make API call to weather forecast
-  axios
-    .get(url, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => console.log(res.data.main))
-    .catch(err => console.log(err));
+  let weather = await axios(url);
+  let weather_data = weather.data;
 });
 
 app.listen(port, () => console.log(`App running on port ${port}`));
