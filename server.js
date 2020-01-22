@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const axios = require("axios");
 const port = 5000 || process.env.PORT;
 
 //Set EJS as template engine
@@ -23,14 +23,17 @@ app.post("/", (req, res) => {
   let lower_city = req.body.city;
   let upper_city = lower_city.charAt(0).toUpperCase() + lower_city.substring(1);
 
-  let url = `api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`;
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`;
 
   //Make API call to weather forecast
-  fetch(
-    `api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`
-  )
-    .then(res => res.json())
-    .then(json => console.log(json));
+  axios
+    .get(url, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => console.log(res.data.main))
+    .catch(err => console.log(err));
 });
 
 app.listen(port, () => console.log(`App running on port ${port}`));
