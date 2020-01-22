@@ -4,5 +4,5 @@ Takes city location as input and provides weather details such as temperature, h
 in real time 
 
 Makes use of the openweather api 
-Link to the API documentation given below 
+Link to the API documentation is =  
 LINK = 'https://openweathermap.org/current'
