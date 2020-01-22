@@ -13,10 +13,35 @@
     <title>Document</title>
   </head>
   <body>
-    <p><%= temp %></p>
-    <p><%= pressure %></p>
-    <p><%= humidity %></p>
-    <a href="/"> Go back </a>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">Weather App</h1>
+        <p class="lead">
+          The Weather Details are as follows
+        </p>
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title">Temperature</h5>
+            <p class="card-text"><%= temp %></p>
+          </div>
+        </div>
+
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+          <div class="card-body text-info">
+            <h5 class="card-title">Pressure</h5>
+            <p class="card-text"><%= pressure %></p>
+          </div>
+        </div>
+
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+          <div class="card-body text-success">
+            <h5 class="card-title">Humidity</h5>
+            <p class="card-text"><%= humidity %></p>
+          </div>
+        </div>
+        <a href="/" class="btn btn-danger"> Go back </a>
+      </div>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
