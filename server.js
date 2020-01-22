@@ -22,8 +22,15 @@ app.post("/", (req, res) => {
   const api_key = "b323aa23f286ee3fa739734a62bbf508";
   let lower_city = req.body.city;
   let upper_city = lower_city.charAt(0).toUpperCase() + lower_city.substring(1);
-  console.log(upper_city);
-  let url = `api.openweathermap.org/data/2.5/weather?q=${upper_city}`;
+
+  let url = `api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`;
+
+  //Make API call to weather forecast
+  fetch(
+    `api.openweathermap.org/data/2.5/weather?q=${upper_city}&appid=${api_key}`
+  )
+    .then(res => res.json())
+    .then(json => console.log(json));
 });
 
 app.listen(port, () => console.log(`App running on port ${port}`));
